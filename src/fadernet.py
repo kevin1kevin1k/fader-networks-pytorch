@@ -2,6 +2,18 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
+torch.manual_seed(1)
+
+# custom weights initialization called on netG and netD
+def weights_init(m):
+    classname = m.__class__.__name__
+    if classname.find('Conv') != -1:
+        m.weight.data.normal_(0.0, 0.02)
+    elif classname.find('BatchNorm') != -1:
+        m.weight.data.normal_(0.0, 0.02)
+        m.bias.data.fill_(0)
+
+
 def C_BN_ACT(c_in, c_out, activation, transpose=False, dropout=None, bn=True):
     layers = []
     if transpose:
@@ -29,6 +41,8 @@ class Encoder(nn.Module):
             bn = False if i == len(k_list) - 1 else True
             layers.append(C_BN_ACT(c_in, c_out, activation, bn=bn))
         self.convs = nn.Sequential(*layers)
+
+        self.apply(weights_init)
     
     def forward(self, x):
         Ex = self.convs(x)
@@ -52,6 +66,8 @@ class Decoder(nn.Module):
         self.deconv5 = C_BN_ACT(k_list[3] + attr_dim, k_list[2], activation, transpose=True)
         self.deconv6 = C_BN_ACT(k_list[2] + attr_dim, k_list[1], activation, transpose=True)
         self.deconv7 = C_BN_ACT(k_list[1] + attr_dim, k_list[0], nn.Tanh(), transpose=True, bn=False)
+
+        self.apply(weights_init)
         
     def repeat_concat(self, Ex, attrs):
         H, W = Ex.size()[2], Ex.size()[3]
@@ -85,6 +101,8 @@ class Discriminator(nn.Module):
         self.dp1 = nn.Dropout(0.3)
         self.fc2 = nn.Linear(512, num_attrs)
         self.dp2 = nn.Dropout(0.3)
+
+        self.apply(weights_init)
     
     def forward(self, Ex):
         if self.image_size == 256:
