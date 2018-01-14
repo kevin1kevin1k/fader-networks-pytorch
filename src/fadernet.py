@@ -78,6 +78,7 @@ class Discriminator(nn.Module):
     '''
     def __init__(self, num_attrs, image_size=256):
         super(Discriminator, self).__init__()
+        self.image_size = image_size
         if image_size == 256:
             self.conv = C_BN_ACT(512, 512, nn.LeakyReLU(0.2)) # ReLU? Dropout?
         self.fc1 = nn.Linear(512, 512)
@@ -86,7 +87,7 @@ class Discriminator(nn.Module):
         self.dp2 = nn.Dropout(0.3)
     
     def forward(self, Ex):
-        if image_size == 256:
+        if self.image_size == 256:
             Ex = self.conv(Ex)
         p = Ex.view(Ex.size()[0], Ex.size()[1])
         p = self.dp1(self.fc1(p))
