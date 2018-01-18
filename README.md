@@ -67,5 +67,5 @@ and
         python3 train_celeba_aga_NoDiscriminator.py
 
 Note that to run the 3 training codes such as train_celeba.py, please download CelebA and put them in the places you want.
-Then you need to run python3 src/reshape.py
+Then you need to run python3 src/reshape.py after changing the paths there.
 You then need to change the 3 paths in these training codes.
