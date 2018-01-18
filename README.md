@@ -10,7 +10,7 @@ This is our final project repository of the course ADLxMLDS 2017, Fall.
 
 In this project, we implement [FaderNet](https://arxiv.org/pdf/1706.00409.pdf) (NIPS 2017) and do capacity/reproducbility/ablation study. Our results can be find in the [poster](fig/post.pdf).
 
-We've noticed that FaceBook had released [the offical github for FaderNet](https://github.com/facebookresearch/FaderNetworks). Since we've started the project slightly earlier than it's release, **ONLY in the part of testing FaderNet on unseen data (out of CelebA) had we used the model & testing code FaceBook released. For all the remaining parts including training & experiments, we're using our own production.**
+We've noticed that FaceBook had released [the offical github for FaderNet](https://github.com/facebookresearch/FaderNetworks). Since we've started the project slightly earlier than it's release, **ONLY in the part of testing FaderNet on unseen data (out of CelebA) had we used the model & modified the testing code FaceBook released. For all the remaining parts including training & experiments, we're using our own production.**
 
 ## Dependency & Requirement
 
@@ -24,7 +24,6 @@ Please make sure each of them is installed with the correct version
 - pandas (0.20.3)
 - skimage (0.13.1)
 - matplotlib (2.1.1)
-- OpenCV
 - Makefile
 
 ### Hardware Requirement
@@ -40,7 +39,11 @@ We're running our experiments with following hardware setting
 
 ## Training
 
-TODO
+FaderNet is trained on [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), which is a large scale human face dataset. If you'd like to train the network yourself, please download CelebA and preprocess it into 256x256 images by running
+
+        TODO
+
+The training process tooks about 1 million steps (5~7 days) to generate result comparable to original paper. (The paper also specified they're strategy on model selection, which we are not capable to reproduce due to resource limitaion. With our own model, we obtain a slightly worse result comparing to the paper due to the limitation of computing power and time we have.)
 
 ## Testing
 ### Testing with our own code & model
@@ -59,4 +62,4 @@ To generate [fig3]() & [fig4]() in the poster (Ablation Study in Experiments), r
 
 aga's comments
 
-### Testing with FaderNet's official release
+
