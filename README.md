@@ -12,6 +12,9 @@ In this project, we implement [FaderNet](https://arxiv.org/pdf/1706.00409.pdf) (
 
 We've noticed that FaceBook had released [the offical github for FaderNet](https://github.com/facebookresearch/FaderNetworks). Since we've started the project slightly earlier than it's release, **ONLY in the part of testing FaderNet on unseen data (out of CelebA) had we used the model & modified the testing code FaceBook released. For all the remaining parts including training & experiments, we're using our own production.**
 
+
+The paper also specified their strategy on model selection, which we are not capable to reproduce due to resource limitaion. With our own model, we obtain a slightly worse result comparing to the paper due to the limitation of computing power and time we have.
+
 ## Dependency & Requirement
 
 ### Packages used in this project
@@ -43,12 +46,12 @@ FaderNet is trained on [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html
 
         TODO
 
-The training process tooks about 1 million steps (5~7 days) to generate result comparable to original paper. (The paper also specified they're strategy on model selection, which we are not capable to reproduce due to resource limitaion. With our own model, we obtain a slightly worse result comparing to the paper due to the limitation of computing power and time we have.)
+The training process tooks about 1 million steps (5~7 days) to generate result comparable to original paper. 
 
 ## Testing
 ### Testing with our own code & model
 
-The model we've trained can be find in [checkpoint/](checkpoint/). The testing images are the first 10 images in CelebA's testing set, we've uploaded the preprocessed version of them in [data/img/](data/img/) in order to let this part of testing can be done without downloading extra data/model
+The model we've trained can be find in [checkpoint/](checkpoint/). The testing images are the first 10 images in CelebA's testing set, we've uploaded the preprocessed version of them in [data/img/](data/img/) in order to let **this part of testing can be done without downloading extra data/model**
 
 To generate [fig2](fig/fig_2.jpg) in the poster (Reproducibility Study in Experiments), run
 
