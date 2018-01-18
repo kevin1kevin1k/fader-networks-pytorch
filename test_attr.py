@@ -2,7 +2,6 @@ from src.celeba_dataset import CelebA
 import torch
 import pandas as pd
 import numpy as np
-from private_test.util import load_images
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from src.celeba_dataset import CelebA
