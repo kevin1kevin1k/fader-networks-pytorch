@@ -1,4 +1,5 @@
-lex Liu & Kevin Li, from NTU CSIE
+# FaderNet : Implementation & Study
+Alex Liu & Kevin Li, from NTU CSIE
 
 ---
 ## Desciprtion
